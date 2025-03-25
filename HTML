@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy Tính Trọng Lượng Thép</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">MÁY TÍNH TRỌNG LƯỢNG THÉP</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Chọn loại thép</h5>
+                    </div>
+                    <div class="card-body">
+                        <select id="steelType" class="form-select mb-3">
+                            <option value="7.85">Carbon / Hardox / XAR / Everhard (7.85 g/cm³)</option>
+                            <option value="7.93">201 / 202 / 301 / 302 / 303 / 304(L) / 305 / 321 (7.93 g/cm³)</option>
+                            <option value="7.98">309S / 310(S) / 316(L) / 347 / 2205 / 2507 / Zeron100 / Duplex / 253MA (7.98 g/cm³)</option>
+                            <option value="7.75">405 / 410 / 420 (7.75 g/cm³)</option>
+                            <option value="7.70">409 / 430 / 434 (7.70 g/cm³)</option>
+                            <option value="2.7">Nhôm (2.7 g/cm³)</option>
+                            <option value="8.96">Đồng (8.96 g/cm³)</option>
+                            <option value="8.4">Inconel 625 (8.4 g/cm³)</option>
+                        </select>
+                        
+                        <div class="mb-3">
+                            <label for="customDensity" class="form-label">Hoặc nhập tỷ trọng tùy chỉnh (g/cm³):</label>
+                            <input type="number" id="customDensity" class="form-control" step="0.01" min="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Chọn hình dạng thép</h5>
+                    </div>
+                    <div class="card-body">
+                        <select id="shapeType" class="form-select">
+                            <option value="plate">Tấm</option>
+                            <option value="roundPipe">Ống tròn</option>
+                            <option value="squarePipe">Ống vuông</option>
+                            <option value="rectPipe">Ống chữ nhật</option>
+                            <option value="flatBar">Lập là (Thanh la)</option>
+                            <option value="roundBar">Cây đặc tròn</option>
+                            <option value="squareBar">Cây đặc vuông</option>
+                            <option value="hexBar">Cây đặc lục giác</option>
+                            <option value="vSteel">Thép V</option>
+                            <option value="uSteel">Thép U</option>
+                            <option value="pipeSize">Kích thước ống tiêu chuẩn</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="inputFields" class="card mb-4">
+                    <!-- Dynamic input fields will be inserted here -->
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button id="calculateBtn" class="btn btn-calculate">TÍNH TOÁN</button>
+                    <button id="resetBtn" class="btn btn-reset">ĐẶT LẠI</button>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Kết quả</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="result" class="text-center">
+                            <p>Nhập thông số và nhấn "TÍNH TOÁN"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Công thức tính</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="formulaDisplay">
+                            <p>Chọn hình dạng thép để xem công thức</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Bảng quy đổi kích thước ống thép</h5>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">NPS</th>
+                                    <th rowspan="2">DN</th>
+                                    <th rowspan="2">OD (mm)</th>
+                                    <th colspan="4">Stainless Steel</th>
+                                    <th colspan="8">Carbon Steel</th>
+                                </tr>
+                                <tr>
+                                    <th>SCH5S</th>
+                                    <th>SCH10S</th>
+                                    <th>SCH40S</th>
+                                    <th>SCH80S</th>
+                                    <th>SCH10</th>
+                                    <th>SCH20</th>
+                                    <th>SCH30</th>
+                                    <th>SCH40</th>
+                                    <th>STD</th>
+                                    <th>SCH60</th>
+                                    <th>SCH80</th>
+                                    <th>XS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pipeSizeTable">
+                                <!-- Pipe size table will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
